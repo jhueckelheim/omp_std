@@ -20,7 +20,7 @@ int main() {
 //       18 |     #pragma omp declare mapper(std::vector<int> v) map(tofrom: (v.data())[0:v.size()])
 //          |                                                                ^~~~~~~~~~~~~~~~~~~~~~
 
-    #pragma omp target teams map(tofrom:vec)
+    #pragma omp target teams map(tofrom:(&vec[0])[0:4])
     {
         #pragma omp distribute
         for (auto i = 0; i < 4; ++i) {
